@@ -8,36 +8,43 @@
 
 import UIKit
 import CoreData
+import AWSCognitoIdentityProvider
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    private let keyPool = "UserPool"
+    
+    private var storyBoard: UIStoryboard? = nil
+    private var navController: UINavigationController? = nil
+    
+    private var viewController: ViewController? = nil
+    private var pinViewController: PinViewController? = nil
+    
+    public private(set) var pool: AWSCognitoIdentityUserPool? = nil
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let serviceConfiguration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: nil)
+        
+        let userPoolConfiguration = AWSCognitoIdentityUserPoolConfiguration(
+            clientId: "7edt8ikaftv4ic0n9to5psu8c2",
+            clientSecret: nil,
+            poolId: "us-east-1_k7HYepu9F")
+    
+        AWSCognitoIdentityUserPool.register(with: serviceConfiguration, userPoolConfiguration: userPoolConfiguration, forKey: keyPool)
+        AWSServiceManager.default().defaultServiceConfiguration = serviceConfiguration
+        
+        pool = AWSCognitoIdentityUserPool(forKey: keyPool)
+        
+        //self.storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        
         return true
     }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
@@ -88,6 +95,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
+
+extension AppDelegate: AWSCognitoIdentityInteractiveAuthenticationDelegate{
+    
+    func startCustomAuthentication() -> AWSCognitoIdentityCustomAuthentication {
+        if (self.navController == nil) {
+            self.navController = self.storyBoard?.instantiateInitialViewController() as? UINavigationController
+        }
+        
+        if (self.viewController == nil) {
+            self.viewController = self.navController?.viewControllers[0] as? ViewController
+        }
+        
+        /*DispatchQueue.main.async {
+            self.navController!.popToRootViewController(animated: true)
+            if (!self.navController!.isViewLoaded
+                || self.navController!.view.window == nil) {
+                self.window?.rootViewController?.present(self.navController!,
+                                                         animated: true,
+                                                         completion: nil)
+            }
+        }*/
+        let navController = self.window?.rootViewController as? UINavigationController
+        return navController?.viewControllers[0] as! ViewController
+        //return self.viewController!
+    }
+}
+
+
 
