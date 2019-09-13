@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         
         
         appDelegate.pool?.delegate = self
-        emailTextField.text = "fernandoperez0330+user15@gmail.com"
+        emailTextField.text = "fernandoperez0330@gmail.com"
         //initialCognitoSetup()
         
         verifyCodeTextField.text = ""
@@ -47,8 +47,9 @@ class ViewController: UIViewController {
     
     private func awsSignIn(username: String){
         emailValue = username
-        resultTextView.text = ""
-        
+        DispatchQueue.main.async {
+            self.resultTextView.text = ""
+        }
         let user = appDelegate.pool?.getUser()
         self.customAuthCompletionSource = nil
         user?.getSession().continueWith(block: { task in

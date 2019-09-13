@@ -17,7 +17,6 @@
 		1C2B1454232ABD0E00CDF689 /* Cognito_Test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B1452232ABD0E00CDF689 /* Cognito_Test.xcdatamodeld */; };
 		1C2B1456232ABD1100CDF689 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2B1455232ABD1100CDF689 /* Assets.xcassets */; };
 		1C2B1459232ABD1100CDF689 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C2B1457232ABD1100CDF689 /* LaunchScreen.storyboard */; };
-		1C2B1461232AD39100CDF689 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B1460232AD39100CDF689 /* File.swift */; };
 		1C2B1463232ADE0600CDF689 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B1462232ADE0600CDF689 /* PinViewController.swift */; };
 		1C2B1469232AEF6200CDF689 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2B1468232AEF6200CDF689 /* AWSCognito.framework */; };
 		1C2B146A232AEF6200CDF689 /* AWSCognito.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2B1468232AEF6200CDF689 /* AWSCognito.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -59,7 +58,6 @@
 		1C2B1455232ABD1100CDF689 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C2B1458232ABD1100CDF689 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C2B145A232ABD1100CDF689 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1C2B1460232AD39100CDF689 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		1C2B1462232ADE0600CDF689 /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		1C2B1468232AEF6200CDF689 /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
 		1C2B146C232AF02500CDF689 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = "../../Downloads/aws-ios-sdk-2.11.0/frameworks/AWSCore.framework"; sourceTree = "<group>"; };
@@ -93,7 +91,6 @@
 				1C2B1471232AF09700CDF689 /* AWSCognitoIdentityProviderASF.framework */,
 				1C2B146E232AF06700CDF689 /* AWSCore.framework */,
 				1C2B1468232AEF6200CDF689 /* AWSCognito.framework */,
-				1C2B1460232AD39100CDF689 /* File.swift */,
 				1C2B144A232ABD0E00CDF689 /* Cognito Test */,
 				1C2B1449232ABD0E00CDF689 /* Products */,
 				361A0A19C631835DDA281182 /* Pods */,
@@ -259,7 +256,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C2B144E232ABD0E00CDF689 /* ViewController.swift in Sources */,
-				1C2B1461232AD39100CDF689 /* File.swift in Sources */,
 				1C2B1454232ABD0E00CDF689 /* Cognito_Test.xcdatamodeld in Sources */,
 				1C2B1463232ADE0600CDF689 /* PinViewController.swift in Sources */,
 				1C2B144C232ABD0E00CDF689 /* AppDelegate.swift in Sources */,
